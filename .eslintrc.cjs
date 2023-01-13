@@ -18,7 +18,7 @@ module.exports = {
     sourceType: 'module',
     project: './tsconfig.json',
   },
-  plugins: ['react', '@typescript-eslint', 'prettier'],
+  plugins: ['react', '@typescript-eslint', 'prettier', 'tailwind'],
   rules: {
     'react/react-in-jsx-scope': 0,
     'prettier/prettier': ['error', { endOfLine: 'auto' }],
