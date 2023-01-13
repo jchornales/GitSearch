@@ -1,8 +1,8 @@
 /* eslint-disable import/no-duplicates */
 import { BrowserRouter } from 'react-router-dom';
 import { Routes, Route } from 'react-router-dom';
-import Home from '../pages/Home';
-import NotFound from '../pages/NotFound';
+import Home from '../../pages/Home';
+import NotFound from '../../pages/NotFound';
 
 export default function PageRoutes() {
   return (

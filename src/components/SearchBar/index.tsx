@@ -1,15 +1,23 @@
-import React from 'react';
+import { ChangeEvent, useState } from 'react';
+import GetProjects from '../ProjectList';
 
 export default function SearchBar() {
+  const [inputValue, setInputValue] = useState('');
+
+  function handleInput(event: ChangeEvent<HTMLInputElement>) {
+    setInputValue(event.target.value);
+  }
+
   return (
-    <div className="form-control">
+    <div className="form-control flex flex-column justify-center align-center m-auto w-1/2 min-h-screen">
       <div className="input-group">
         <input
           type="text"
           placeholder="Search…"
-          className="input input-bordered"
+          className="input w-full input-bordered border-2 focus:outline-0 focus:border-emerald"
+          onChange={handleInput}
         />
-        <button className="btn btn-square">
+        <button className="btn btn-square bg-emerald">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-6 w-6"
@@ -26,6 +34,8 @@ export default function SearchBar() {
           </svg>
         </button>
       </div>
+
+      <GetProjects inputValue={inputValue} />
     </div>
   );
 }
