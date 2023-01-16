@@ -22,3 +22,21 @@ export type UserData = {
   followers: number;
   following: number;
 };
+
+export type ReposData = {
+  login: string;
+  id: number;
+  name: string;
+  full_name: string;
+  html_url: string;
+};
+
+export type SliderStatusType = {
+  isOpen: boolean;
+  setIsOpen: any;
+};
+
+export type TargetUserType = {
+  targetUser: any;
+  setTargetUser: any;
+};

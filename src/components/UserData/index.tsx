@@ -1,5 +1,8 @@
 import { useQuery } from '@tanstack/react-query';
+import { useContext, useState } from 'react';
 import { fetchUsersData } from '../../configs/api/FetchData';
+import { SliderStatusContext } from '../../configs/context/ProjectContext';
+import { TargetUserContext } from '../../configs/context/TargetUserContext';
 import { User } from '../../configs/types/Types';
 
 type Props = {
@@ -7,13 +10,20 @@ type Props = {
 };
 
 export default function UserData({ user }: Props) {
+  const { isOpen, setIsOpen } = useContext(SliderStatusContext);
+  const { setTargetUser } = useContext(TargetUserContext);
+
   const username = user.login;
   const { data: info } = useQuery({
     queryKey: ['users', username],
     queryFn: () => fetchUsersData(username),
-
     enabled: !!username,
   });
+
+  function handleOpen(currentUser: string | undefined) {
+    setIsOpen(!isOpen);
+    setTargetUser(currentUser);
+  }
 
   return (
     <>
@@ -104,6 +114,13 @@ export default function UserData({ user }: Props) {
           </div>
         </div>
       </div>
+      <button
+        type="button"
+        onClick={() => handleOpen(info?.login)}
+        className="absolute group-hover:bg-white group-hover:hover:bg-gray-800 right-5 bottom-1/4 btn btn-outline "
+      >
+        Open
+      </button>
     </>
   );
 }
