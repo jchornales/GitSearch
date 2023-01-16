@@ -20,11 +20,11 @@ export default function Sliders() {
           isOpen ? 'right-0' : '-right-full'
         } delay-150 duration-300 bg-white h-screen w-1/3 z-10`}
       >
-        <div className="relative w-full h-full">
+        <div className="relative w-full h-full py-5">
           <button
             onClick={() => setIsOpen(!isOpen)}
             type="button"
-            className="absolute bg-white border-none -translate-x-full p-2"
+            className="absolute top-0 bg-white border-none -translate-x-full p-2"
           >
             <svg
               className="svg-icon w-8"
@@ -40,9 +40,19 @@ export default function Sliders() {
               <path d="M780.8 537.6 422.4 179.2c-12.8-12.8-12.8-25.6 0-38.4l6.4-6.4c12.8-12.8 25.6-12.8 38.4 0l358.4 358.4c12.8 12.8 12.8 25.6 0 38.4l-6.4 6.4C806.4 550.4 793.6 550.4 780.8 537.6z" />
             </svg>
           </button>
-          <ul>
+          <ul className="px-5 hover:overflow-y-scroll h-screen">
             {repos?.map((repo) => {
-              return <li key={repo.id}>{repo.full_name}</li>;
+              return (
+                <li className="group hover:bg-emerald-600" key={repo.id}>
+                  <a
+                    target="_blank"
+                    href={repo.html_url}
+                    className="group-hover:text-white border-2 border-gray mt-2 mb-2 flex p-3"
+                  >
+                    {repo.full_name}
+                  </a>
+                </li>
+              );
             })}
           </ul>
         </div>

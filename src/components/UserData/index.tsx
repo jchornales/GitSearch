@@ -119,7 +119,7 @@ export default function UserData({ user }: Props) {
         onClick={() => handleOpen(info?.login)}
         className="absolute group-hover:bg-white group-hover:hover:bg-gray-800 right-5 bottom-1/4 btn btn-outline "
       >
-        Open
+        See Projects
       </button>
     </>
   );
