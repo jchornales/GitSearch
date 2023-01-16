@@ -30,18 +30,24 @@ export default function UsersList({ inputValue, users }: Props): JSX.Element {
             </svg>
             <span>
               The username you entered does not exist. Please try again or
-              create a new account.
+              <a
+                className="ml-1 underline hover:text-white"
+                href="https://github.com/signup?ref_cta=Sign+up&ref_loc=header+logged+out&ref_page=%2F&source=header-home"
+              >
+                create a new account
+              </a>
+              .
             </span>
           </div>
         </div>
       );
     } else {
       return (
-        <ul className="users-list max-h-400 overflow-y-scroll">
+        <ul className="users-list mt-20 max-h-400 overflow-hidden hover:overflow-y-scroll">
           {filteredData.map((user) => {
             return (
               <li
-                className="group hover:bg-emerald-600 border-2 border-gray mt-2 mb-2 flex p-3"
+                className="relative group hover:bg-emerald-600 border-2 border-gray mt-2 mb-2 flex p-3"
                 key={user.id}
               >
                 <UserData user={user} />
